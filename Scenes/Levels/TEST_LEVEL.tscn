@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceqry8futfrir"]
+
+[ext_resource type="PackedScene" uid="uid://ckleb2oi3jx" path="res://Scenes/Player/Player.tscn" id="1_jf8ei"]
+
+[node name="TEST_LEVEL" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -17.0
+offset_top = -31.0
+offset_right = 1174.0
+offset_bottom = 679.0
+color = Color(0.870588, 0.882353, 0.905882, 0.529412)
+
+[node name="Player" parent="." instance=ExtResource("1_jf8ei")]
+position = Vector2(575, 299)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(578, 311)
+zoom = Vector2(2, 2)
