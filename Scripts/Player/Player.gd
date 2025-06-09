@@ -11,18 +11,24 @@ extends CharacterBody2D
 var can_dash := true
 var is_invulnerable := false
 var is_dashing := false
+var is_dead := false
+var is_falling := true
 var dash_direction := Vector2.ZERO
 var dash_elapsed := 0.0
-var is_dead := false
 
 # === REFERENCIAS ===
 @onready var anim := $AnimatedSprite2D
 @onready var dash_timer := $DashTimer
 @onready var invuln_timer := $InvulnTimer
 
+# === INICIO ===
+func _ready():
+	anim.play("fall")
+	velocity = Vector2.ZERO
+
 # === LÓGICA PRINCIPAL ===
 func _physics_process(delta):
-	if is_dead:
+	if is_dead or is_falling:
 		return
 
 	# Si está haciendo dash, moverse manualmente
@@ -35,7 +41,6 @@ func _physics_process(delta):
 		else:
 			velocity = dash_direction * (dash_distance / dash_duration)
 			move_and_slide()
-		anim.play("roll")
 		return
 
 	# Movimiento normal
@@ -82,3 +87,8 @@ func _on_dash_timer_timeout() -> void:
 
 func _on_invuln_timer_timeout() -> void:
 	is_invulnerable = false
+
+# === CALLBACK ANIMACIONES ===
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if anim.animation == "fall":
+		is_falling = false
