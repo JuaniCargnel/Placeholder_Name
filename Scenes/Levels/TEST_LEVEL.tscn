@@ -5,11 +5,12 @@
 [node name="TEST_LEVEL" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = -10
 offset_left = -17.0
 offset_top = -31.0
 offset_right = 1174.0
 offset_bottom = 679.0
-color = Color(0.870588, 0.882353, 0.905882, 0.529412)
+color = Color(0.417801, 1, 0.848052, 0.529412)
 
 [node name="Player" parent="." instance=ExtResource("1_jf8ei")]
 position = Vector2(575, 299)

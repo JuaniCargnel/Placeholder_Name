@@ -1,8 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://ckleb2oi3jx"]
+[gd_scene load_steps=36 format=3 uid="uid://ckleb2oi3jx"]
 
 [ext_resource type="Script" uid="uid://bynueiu8e5tr3" path="res://Scripts/Player/Player.gd" id="1_s0eop"]
 [ext_resource type="Texture2D" uid="uid://bbfcm4usmgbcs" path="res://Assets/Sprites/Player/mPlayer_ [human].png" id="2_ft8w5"]
-[ext_resource type="PackedScene" uid="uid://6vnyp66qib4h" path="res://Scenes/Player/Hand.tscn" id="3_h54ih"]
+[ext_resource type="Material" uid="uid://dwg0omeocgw24" path="res://Assets/Sprites/Player/processMaterial.tres" id="4_ude3g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ft8w5"]
 atlas = ExtResource("2_ft8w5")
@@ -239,6 +239,10 @@ size = Vector2(22, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ude3g"]
 size = Vector2(24.25, 34)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wid83"]
+atlas = ExtResource("2_ft8w5")
+region = Rect2(36.9428, 72.796, 21.7248, 22.8835)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_s0eop")
 
@@ -267,13 +271,16 @@ one_shot = true
 [node name="InvulnTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="HandsRoot" type="Node2D" parent="."]
-
-[node name="LeftHand" parent="HandsRoot" instance=ExtResource("3_h54ih")]
-position = Vector2(-20, -5)
-
-[node name="RightHand" parent="HandsRoot" instance=ExtResource("3_h54ih")]
-position = Vector2(-22, 4)
+[node name="DashParticles" type="GPUParticles2D" parent="."]
+z_index = -1
+texture_filter = 1
+position = Vector2(0, 10)
+emitting = false
+amount = 10
+texture = SubResource("AtlasTexture_wid83")
+speed_scale = 2.5
+trail_lifetime = 0.4
+process_material = ExtResource("4_ude3g")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

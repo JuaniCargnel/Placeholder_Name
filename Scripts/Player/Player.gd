@@ -28,6 +28,7 @@ var current_hand := 0
 @onready var invuln_timer := $InvulnTimer
 @onready var left_hand := $HandsRoot/LeftHand
 @onready var right_hand := $HandsRoot/RightHand
+@onready var dash_particles := $DashParticles
 
 # === INICIO ===
 func _ready():
@@ -41,12 +42,14 @@ func _physics_process(delta):
 
 	# Si está haciendo dash, moverse manualmente
 	if is_dashing:
+		dash_particles.emitting = false
 		dash_elapsed += delta
 		var t := dash_elapsed / dash_duration
 		if t >= 1.0:
 			is_dashing = false
 			velocity = Vector2.ZERO
 		else:
+			dash_particles.emitting = true
 			velocity = dash_direction * (dash_distance / dash_duration)
 			move_and_slide()
 		return
@@ -59,6 +62,7 @@ func _physics_process(delta):
 	if velocity.length() > 0:
 		anim.play("run")
 		anim.flip_h = velocity.x < 0
+		dash_particles.scale.x = velocity.x 
 	else:
 		anim.play("idle")
 
@@ -78,19 +82,12 @@ func _process(delta: float) -> void:
 	var left_offset = Vector2(orbit_radius, 0).rotated(mouse_angle - PI / 4)
 	var right_offset = Vector2(orbit_radius, 0).rotated(mouse_angle + PI / 4)
 
-	left_hand.global_position = global_position + left_offset
-	right_hand.global_position = global_position + right_offset
-
-	# Rotar raíz de manos hacia el mouse
-	$HandsRoot.look_at(get_global_mouse_position())
-
 	# Ataque por turnos
 	attack_timer -= delta
 	if Input.is_action_just_pressed("attack") and attack_timer <= 0:
 		attack_timer = attack_cooldown
 		var hand = left_hand if current_hand == 0 else right_hand
 		current_hand = (current_hand + 1) % 2
-		hand_attack(hand)
 
 # === DASH ===
 func start_dash():
@@ -102,20 +99,6 @@ func start_dash():
 
 	invuln_timer.start(invuln_duration)
 	dash_timer.start(dash_cooldown)
-
-# === ATAQUE DE MANO ===
-func hand_attack(hand: Node2D):
-	var dir = (get_global_mouse_position() - hand.global_position).normalized()
-	var punch_distance := 30
-
-	var tween := create_tween()
-	tween.tween_property(hand, "global_position", hand.global_position + dir * punch_distance, 0.1)
-	tween.tween_property(
-		hand,
-		"global_position",
-		global_position + (hand.global_position - global_position).normalized() * orbit_radius,
-		0.1
-	).set_delay(0.1)
 
 # === DAÑO ===
 func receive_damage(_amount: int):
