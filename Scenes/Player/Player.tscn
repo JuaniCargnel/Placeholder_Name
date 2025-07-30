@@ -243,7 +243,7 @@ size = Vector2(24.25, 34)
 atlas = ExtResource("2_ft8w5")
 region = Rect2(36.9428, 72.796, 21.7248, 22.8835)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_s0eop")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -258,7 +258,7 @@ frame_progress = 1.0
 position = Vector2(1, 8)
 shape = SubResource("RectangleShape2D_h54ih")
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." groups=["player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0.875, 8)

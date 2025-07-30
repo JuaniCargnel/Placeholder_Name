@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://vm6yy4wuap3c"]
+
+[ext_resource type="Script" uid="uid://dxt1e4h6t1yqr" path="res://Scripts/Enemies/dummy.gd" id="1_fotkt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8k3w3"]
+
+[node name="Dummy" type="Node2D" groups=["enemies"]]
+script = ExtResource("1_fotkt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_8k3w3")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FireballCard" load_steps=3 format=3 uid="uid://bcftld5imgd6m"]
+
+[ext_resource type="PackedScene" uid="uid://b7wjndds7g46x" path="res://Scenes/Cards/Projectile.tscn" id="1_y4jkc"]
+[ext_resource type="Script" uid="uid://owrrbh71epd8" path="res://Scripts/Cards/fireball_card.gd" id="2_dle0r"]
+
+[resource]
+script = ExtResource("2_dle0r")
+projectile_scene = ExtResource("1_y4jkc")
+name = "Fireball"
+cooldown = 1.0
+metadata/_custom_type_script = "uid://owrrbh71epd8"

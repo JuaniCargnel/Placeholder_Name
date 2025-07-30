@@ -16,24 +16,17 @@ var is_falling := true
 var dash_direction := Vector2.ZERO
 var dash_elapsed := 0.0
 
-# === MANOS ===
-var orbit_radius := 20
-var attack_cooldown := 0.3
-var attack_timer := 0.0
-var current_hand := 0
-
 # === REFERENCIAS ===
 @onready var anim := $AnimatedSprite2D
 @onready var dash_timer := $DashTimer
 @onready var invuln_timer := $InvulnTimer
-@onready var left_hand := $HandsRoot/LeftHand
-@onready var right_hand := $HandsRoot/RightHand
 @onready var dash_particles := $DashParticles
 
 # === INICIO ===
 func _ready():
 	anim.play("fall")
 	velocity = Vector2.ZERO
+
 
 # === LÓGICA PRINCIPAL ===
 func _physics_process(delta):
@@ -71,23 +64,12 @@ func _physics_process(delta):
 		start_dash()
 
 # === PROCESO VISUAL ===
-func _process(delta: float) -> void:
-	if is_dead or is_falling:
-		return
+func _process(_delta):
+	if Input.is_action_just_pressed("attack"):
+		CardManager.use_current_card(self)
+	if Input.is_action_just_pressed("card_change"):
+		CardManager.choose_random_card()
 
-	# Ángulo hacia el mouse
-	var mouse_angle = (get_global_mouse_position() - global_position).angle()
-
-	# Posiciones fijas a los lados del ángulo (como "manos en V")
-	var left_offset = Vector2(orbit_radius, 0).rotated(mouse_angle - PI / 4)
-	var right_offset = Vector2(orbit_radius, 0).rotated(mouse_angle + PI / 4)
-
-	# Ataque por turnos
-	attack_timer -= delta
-	if Input.is_action_just_pressed("attack") and attack_timer <= 0:
-		attack_timer = attack_cooldown
-		var hand = left_hand if current_hand == 0 else right_hand
-		current_hand = (current_hand + 1) % 2
 
 # === DASH ===
 func start_dash():
