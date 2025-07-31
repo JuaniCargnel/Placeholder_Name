@@ -13,11 +13,11 @@ func use_card(user: Node2D) -> void:
 	var projectile = projectile_scene.instantiate()
 	projectile.global_position = user.global_position
 
-	# Obtenemos la posición global del mouse desde el viewport
-	var mouse_pos := user.get_viewport().get_mouse_position()
+	var mouse_pos := user.get_viewport().get_camera_2d().get_global_mouse_position()
 	projectile.direction = (mouse_pos - user.global_position).normalized()
-
+	
+	projectile.max_bounces = 2
+	projectile.zone_radius = 80
+	projectile.damage = 50
 	projectile.element = "fire"
-
-	# Aseguramos que se agregue correctamente a la escena activa
 	user.get_tree().current_scene.add_child(projectile)

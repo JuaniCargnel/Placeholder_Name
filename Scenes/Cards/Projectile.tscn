@@ -1,9 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7wjndds7g46x"]
+[gd_scene load_steps=10 format=3 uid="uid://b7wjndds7g46x"]
 
 [ext_resource type="Script" uid="uid://dfppmnxhkc7sp" path="res://Scripts/Cards/projectile.gd" id="1_nrohu"]
 [ext_resource type="PackedScene" uid="uid://gkvfqf4056mt" path="res://Scenes/Cards/ElementalZone.tscn" id="2_3lc7n"]
+[ext_resource type="Texture2D" uid="uid://bg7o4c0kpgwvk" path="res://Assets/Sprites/Cards/Fireball/FB500-1.png" id="3_xo2c6"]
+[ext_resource type="Texture2D" uid="uid://b87uegtwttn8j" path="res://Assets/Sprites/Cards/Fireball/FB500-2.png" id="4_fksgw"]
+[ext_resource type="Texture2D" uid="uid://bkfklywx6dchi" path="res://Assets/Sprites/Cards/Fireball/FB500-3.png" id="5_8es4m"]
+[ext_resource type="Texture2D" uid="uid://t7e82w1nud7x" path="res://Assets/Sprites/Cards/Fireball/FB500-4.png" id="6_3yw0j"]
+[ext_resource type="Texture2D" uid="uid://wng4jjqb7q3l" path="res://Assets/Sprites/Cards/Fireball/FB500-5.png" id="7_nex5d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3lc7n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xo2c6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fksgw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8es4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3yw0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nex5d")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 7.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sp44n"]
 radius = 28.0179
@@ -14,9 +40,10 @@ elemental_zone_scene = ExtResource("2_3lc7n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3lc7n")
+animation = &"fire"
+frame_progress = 0.166795
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sp44n")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

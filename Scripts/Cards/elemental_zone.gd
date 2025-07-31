@@ -15,7 +15,7 @@ func _ready():
 func modulate_by_element():
 	match element:
 		"fire":
-			modulate = Color(1, 0.3, 0.1)
+			$CollisionShape2D.set_debug_color("ff00216b")
 		"water":
 			modulate = Color(0.2, 0.5, 1)
 		"ice":

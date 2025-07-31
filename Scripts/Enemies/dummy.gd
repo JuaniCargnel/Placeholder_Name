@@ -1,10 +1,12 @@
-extends Node2D
+extends Area2D
 
 @export var max_health := 100
 var health := max_health
 
 func _ready():
 	health = max_health
+
+
 
 func take_damage(amount: int) -> void:
 	health -= amount
