@@ -6,10 +6,10 @@ var current_card: Card = null
 func _ready():
 	# Cargá todas las cartas disponibles (provisional, a mano)
 	available_cards = [
-		preload("res://Scripts/Cards/fireballCard.tres"),
-		#preload("res://scripts/ice_card.gd").new(),
-		#preload("res://scripts/water_card.gd").new(),
-		#preload("res://scripts/earth_card.gd").new()
+		preload("res://Scripts/Cards/dotTresCards/fireballCard.tres"),
+		preload("res://Scripts/Cards/dotTresCards/waterballCard.tres"),
+		preload("res://Scripts/Cards/dotTresCards/earthballCard.tres"),
+		preload("res://Scripts/Cards/dotTresCards/iceballCard.tres"),
 	]
 
 	choose_random_card()

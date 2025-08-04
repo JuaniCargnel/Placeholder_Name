@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b7wjndds7g46x"]
 
-[ext_resource type="Script" uid="uid://dfppmnxhkc7sp" path="res://Scripts/Cards/projectile.gd" id="1_nrohu"]
+[ext_resource type="Script" uid="uid://dfppmnxhkc7sp" path="res://Scripts/Cards/GlobalCards/projectile.gd" id="1_nrohu"]
 [ext_resource type="PackedScene" uid="uid://gkvfqf4056mt" path="res://Scenes/Cards/ElementalZone.tscn" id="2_3lc7n"]
 [ext_resource type="Texture2D" uid="uid://bg7o4c0kpgwvk" path="res://Assets/Sprites/Cards/Fireball/FB500-1.png" id="3_xo2c6"]
 [ext_resource type="Texture2D" uid="uid://b87uegtwttn8j" path="res://Assets/Sprites/Cards/Fireball/FB500-2.png" id="4_fksgw"]
@@ -10,6 +10,11 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3lc7n"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"earth",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_xo2c6")
@@ -29,6 +34,16 @@ animations = [{
 "loop": true,
 "name": &"fire",
 "speed": 7.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"ice",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"water",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sp44n"]
@@ -39,9 +54,10 @@ script = ExtResource("1_nrohu")
 elemental_zone_scene = ExtResource("2_3lc7n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.999985, 0.999985)
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_3lc7n")
-animation = &"fire"
-frame_progress = 0.166795
+animation = &"water"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sp44n")

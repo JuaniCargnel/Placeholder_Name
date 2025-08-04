@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EarthballCard" load_steps=3 format=3 uid="uid://bjrn3ac5p301h"]
+
+[ext_resource type="Script" uid="uid://bh6sm43do3qn5" path="res://Scripts/Cards/earthball_card.gd" id="1_r67nf"]
+[ext_resource type="PackedScene" uid="uid://b7wjndds7g46x" path="res://Scenes/Cards/Projectile.tscn" id="1_rkva3"]
+
+[resource]
+script = ExtResource("1_r67nf")
+projectile_scene = ExtResource("1_rkva3")
+name = "Earthball"
+cooldown = 1.0
+metadata/_custom_type_script = "uid://bh6sm43do3qn5"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="IceballCard" load_steps=3 format=3 uid="uid://bt0q1d0f0uvhf"]
+
+[ext_resource type="Script" uid="uid://d25f1kbt65c8" path="res://Scripts/Cards/iceball_card.gd" id="1_nyjp7"]
+[ext_resource type="PackedScene" uid="uid://b7wjndds7g46x" path="res://Scenes/Cards/Projectile.tscn" id="1_p3oao"]
+
+[resource]
+script = ExtResource("1_nyjp7")
+projectile_scene = ExtResource("1_p3oao")
+name = "Iceball"
+cooldown = 1.0
+metadata/_custom_type_script = "uid://d25f1kbt65c8"

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://gkvfqf4056mt"]
 
-[ext_resource type="Script" uid="uid://brme3o3j7qo6q" path="res://Scripts/Cards/elemental_zone.gd" id="1_6k6dq"]
+[ext_resource type="Script" uid="uid://brme3o3j7qo6q" path="res://Scripts/Cards/GlobalCards/elemental_zone.gd" id="1_6k6dq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6ni4t"]
 

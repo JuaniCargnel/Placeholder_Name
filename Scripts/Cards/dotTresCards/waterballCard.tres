@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WaterballCard" load_steps=3 format=3 uid="uid://cumpn8cqnqgdf"]
+
+[ext_resource type="PackedScene" uid="uid://b7wjndds7g46x" path="res://Scenes/Cards/Projectile.tscn" id="1_row4d"]
+[ext_resource type="Script" uid="uid://chpse2d3d5urc" path="res://Scripts/Cards/waterball_card.gd" id="1_v3x8e"]
+
+[resource]
+script = ExtResource("1_v3x8e")
+projectile_scene = ExtResource("1_row4d")
+name = "Waterball"
+cooldown = 1.0
+metadata/_custom_type_script = "uid://chpse2d3d5urc"

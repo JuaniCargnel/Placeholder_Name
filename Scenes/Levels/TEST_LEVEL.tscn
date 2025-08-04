@@ -10,6 +10,7 @@ size = Vector2(20, 431)
 size = Vector2(653, 20)
 
 [node name="TEST_LEVEL" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [-94.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -10

@@ -1,10 +1,7 @@
 extends Card
-class_name FireballCard
+class_name WaterballCard
 
 @export var projectile_scene: PackedScene
-@export var fire_zone_radius := 32.0
-@export var fire_zone_duration := 3.0
-@export var fire_damage := 10
 
 func use_card(user: Node2D) -> void:
 	super.use_card(user)
@@ -19,9 +16,5 @@ func use_card(user: Node2D) -> void:
 	var mouse_pos := user.get_viewport().get_mouse_position()
 	projectile.direction = (mouse_pos - user.global_position).normalized()
 
-	projectile.element = "fire"
-	projectile.zone_radius = fire_zone_radius
-	projectile.zone_duration = fire_zone_duration
-	projectile.damage = fire_damage
-
+	projectile.element = "water"
 	user.get_tree().current_scene.add_child(projectile)
